@@ -14,10 +14,10 @@ const props = defineProps({
    navItems: {
     type: Array,
     default: () => [
-        { name: 'Home', href: '#', active: true},
-        { name: 'About', href: '#about', active: false },
-        { name: 'Services', href: '#services', active: false },
-        { name: 'Contact', href: '#contact', active: false },
+        { name: 'Trang Chủ', href: '#', active: true},
+        { name: 'Giới Thiệu', href: '#about', active: false },
+        { name: 'Sản Phẩm', href: '#services', active: false },
+        { name: 'Liên Hệ', href: '#contact', active: false },
     ]
    }
 });
