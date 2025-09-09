@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import zaloLogo from '../assets/Zalo-Logo.png'
 
 const props = defineProps({
    brandLogo: {
@@ -17,11 +18,10 @@ const props = defineProps({
    navItems: {
     type: Array,
     default: () => [
-        { name: 'Home', href: '#home'},
-        { name: 'Features', href: '#features'},
-        { name: 'Solutions', href: '#solutions'},
-        { name: 'Testimonials', href: '#testimonials'},
-        { name: 'Contact', href: '#contact'},
+        { name: 'Giới Thiệu', href: '#story'}, 
+        { name: 'Sản Phẩm', href: '#products'},
+        { name: 'Tin Tức', href: '#news'},
+        { name: 'Liên Hệ', href: '#contact'},
     ]
    }
 });
@@ -42,13 +42,20 @@ const socialIcons = [
     {
         name: 'Facebook',
         icon: `<svg class="w-10 h-10 transition-all duration-300 ease-in-out" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
-        url: 'https://facebook.com'
+        url: 'https://www.facebook.com/share/1NtF39Gdm4/?mibextid=wwXIfr'
     },
     {
-        name: 'Instagram',
-        icon: `<svg class="w-10 h-10 transition-all duration-300 ease-in-out" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C8.396 0 7.989.013 7.041.048 6.094.082 5.48.204 4.94.388a5.486 5.486 0 00-1.988 1.292 5.479 5.479 0 00-1.292 1.988C1.472 4.208 1.35 4.822 1.316 5.769.281 6.717.268 7.124.268 10.745c0 3.622.013 4.029.048 4.976.034.947.156 1.561.34 2.101a5.487 5.487 0 001.292 1.988 5.487 5.487 0 001.988 1.292c.54.184 1.154.306 2.101.34.947.035 1.354.048 4.976.048 3.622 0 4.029-.013 4.976-.048.947-.034 1.561-.156 2.101-.34a5.487 5.487 0 001.988-1.292 5.479 5.479 0 001.292-1.988c.184-.54.306-1.154.34-2.101.035-.947.048-1.354.048-4.976 0-3.622-.013-4.029-.048-4.976-.034-.947-.156-1.561-.34-2.101a5.487 5.487 0 00-1.292-1.988A5.487 5.487 0 0019.078.388c-.54-.184-1.154-.306-2.101-.34C16.029.013 15.622.001 12.017.001zM12.017 2.163c3.556 0 3.98.013 5.385.066.662.03 1.022.138 1.262.23.317.123.543.27.78.507.237.237.384.463.507.78.092.24.2.6.23 1.262.053 1.405.066 1.829.066 5.385 0 3.556-.013 3.98-.066 5.385-.03.662-.138 1.022-.23 1.262-.123.317-.27.543-.507.78-.237.237-.463.384-.78.507-.24.092-.6.2-1.262.23-1.405.053-1.829.066-5.385.066-3.556 0-3.98-.013-5.385-.066-.662-.03-1.022-.138-1.262-.23a2.097 2.097 0 01-.78-.507 2.097 2.097 0 01-.507-.78c-.092-.24-.2-.6-.23-1.262-.053-1.405-.066-1.829-.066-5.385 0-3.556.013-3.98.066-5.385.03-.662.138-1.022.23-1.262.123-.317.27-.543.507-.78.237-.237.463-.384.78-.507.24-.092.6-.2 1.262-.23 1.405-.053 1.829-.066 5.385-.066zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12.017 16a4 4 0 110-8 4 4 0 010 8zm7.846-10.405a1.441 1.441 0 01-2.88 0 1.441 1.441 0 012.88 0z"/></svg>`,
-        url: 'https://instagram.com'
-    }
+        name: 'Messenger',
+        icon: `<svg class="w-10 h-10 transition-all duration-300 ease-in-out" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.13 3.26L19.764 8.1l-6.573 6.863z"/></svg>`,
+        url: 'https://m.me/ton.thep.tong.thuy'
+    },
+    {
+        name: 'Zalo',
+        logoImage: zaloLogo,
+        url: '#qr-section',
+        isInternal: true
+    },
+    
 ]
 
 // Reactive state for mobile menu
@@ -141,12 +148,19 @@ const handleNavClick = (event, item) => {
                             v-for="social in socialIcons"
                             :key="social.name"
                             :href="social.url"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-gray-600 hover:text-blue-600 transition-all duration-300 p-2 rounded-lg hover:bg-blue-50 hover:shadow-md transform hover:scale-125 hover:rotate-12 hover:-translate-y-2"
-                            v-html="social.icon"
+                            :target="social.isInternal ? '_self' : '_blank'"
+                            :rel="social.isInternal ? '' : 'noopener noreferrer'"
+                            class="social-elegant text-blue-600 hover:text-blue-800 p-3"
                             :title="social.name"
                         >
+                            <!-- Use logo image if available, otherwise use SVG icon -->
+                            <img 
+                                v-if="social.logoImage" 
+                                :src="social.logoImage" 
+                                :alt="social.name + ' Logo'"
+                                class="w-10 h-10 transition-all duration-300 ease-in-out object-contain"
+                            >
+                            <div v-else v-html="social.icon"></div>
                         </a>
                     </div>
                 </div>
@@ -210,12 +224,19 @@ const handleNavClick = (event, item) => {
                             v-for="social in socialIcons"
                             :key="social.name"
                             :href="social.url"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="text-gray-600 hover:text-blue-600 transition-all duration-300 p-3 rounded-lg hover:bg-blue-50 social-pulse"
-                            v-html="social.icon"
+                            :target="social.isInternal ? '_self' : '_blank'"
+                            :rel="social.isInternal ? '' : 'noopener noreferrer'"
+                            class="social-elegant text-blue-600 hover:text-blue-800 p-3"
                             :title="social.name"
                         >
+                            <!-- Use logo image if available, otherwise use SVG icon -->
+                            <img 
+                                v-if="social.logoImage" 
+                                :src="social.logoImage" 
+                                :alt="social.name + ' Logo'"
+                                class="w-10 h-10 transition-all duration-300 ease-in-out object-contain"
+                            >
+                            <div v-else v-html="social.icon"></div>
                         </a>
                     </div>
                 </div>

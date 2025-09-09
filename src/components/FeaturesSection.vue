@@ -19,16 +19,6 @@ const features = [
         icon: '📱',
         title: 'Mobile Optimized',
         description: 'Fully responsive design that works perfectly on all devices and screen sizes.'
-    },
-    {
-        icon: '⚙️',
-        title: 'Easy Integration',
-        description: 'Seamless integration with your existing tools and workflows.'
-    },
-    {
-        icon: '🎧',
-        title: '24/7 Support',
-        description: 'Our dedicated support team is always ready to help you anytime.'
     }
 ]
 </script>
@@ -43,7 +33,7 @@ const features = [
                 <p class="text-gray-600 max-w-2xl mx-auto">Chúng tôi mang đến những giải pháp sáng tạo và hiệu quả nhất, cùng với chất lượng vật liệu cao cấp, bền bỉ theo thời gian.</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <div 
                     v-for="feature in features"
                     :key="feature.title"

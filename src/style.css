@@ -3,28 +3,59 @@
 @tailwind components;
 @tailwind utilities;
 
-
-#app {
-  font-weight: normal;
-}
-
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
+/* ELEGANT PROFESSIONAL STYLING */
 body {
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  position: relative;
+}
+
+/* SUBTLE FLOATING ELEMENTS */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1px 1px at 25% 25%, rgba(102, 126, 234, 0.1), transparent),
+    radial-gradient(1px 1px at 75% 75%, rgba(118, 75, 162, 0.1), transparent);
+  background-size: 100px 100px;
+  animation: gentle-float 30s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes gentle-float {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-20px); }
+}
+
+/* REFINED GRADIENT BACKGROUNDS */
+.gradient-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #667eea 100%);
+  background-size: 200% 200%;
+  animation: subtle-gradient 15s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  animation: subtle-shine 8s ease-in-out infinite;
+}
+
+@keyframes subtle-gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .gradient-bg {

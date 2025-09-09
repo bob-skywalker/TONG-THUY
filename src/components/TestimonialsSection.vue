@@ -5,24 +5,24 @@ import persona3 from '../assets/persona3.jpg'
 
 const testimonials = [
     {
-        name: 'Thanh Nguyen',
-        position: 'Real Customer',
+        name: 'Hương Nguyễn',
+        position: 'Ka Đô',
         avatar: persona1,
         text: 'Đối với người khó tính như tôi thì chắc có mỗi chỗ này đáp ứng được nhu cầu từ chất lượng cho đến giá thành. Đó là giờ làm kho với nhà xưởng toàn lấy hàng của Tòng Thuỷ.',
         rating: 5
     },
     {
-        name: 'Phuong Tran',
-        position: 'Real Customer',
+        name: 'Phương Trần',
+        position: 'Đức Trọng',
         avatar: persona2,
         text: 'Nhà mình ở Đức Trọng, vùng này mưa nắng thất thường nên chọn tôn PU mua ở đây là chuẩn bài. Chống ồn khi trời mưa rất tốt, không bị ù tai như tôn thường. Ai ở khu vực cao nguyên thì nên chọn loại này 👍',
         rating: 5
     },
     {
-        name: 'Bob Tran',
-        position: 'Real Customer',
+        name: 'Trung Tín',
+        position: 'Đà Lạt',
         avatar: persona3,
-        text: 'Dịch vụ tuyệt vời! Mình thật sự rất hài lòng với cách nhân viên chăm sóc khách hàng – nhiệt tình, chu đáo và thân thiện hết mức! Rất đáng để trải nghiệm!',
+        text: 'Sản phẩm chất lượng ! Mình thật sự rất hài lòng với cách nhân viên chăm sóc khách hàng – nhiệt tình, chu đáo và thân thiện hết mức! Rất đáng để trải nghiệm!',
         rating: 5
     }
 ]

@@ -8,6 +8,7 @@ import SolutionsSection from './components/SolutionsSection.vue';
 import StatsSection from './components/StatsSection.vue';
 import TestimonialsSection from './components/TestimonialsSection.vue';
 import CTASection from './components/CTASection.vue';
+import QRSection from './components/QRSection.vue';
 import ContactSection from './components/ContactSection.vue';
 import Footer from './components/Footer.vue';
 </script>
@@ -25,6 +26,7 @@ import Footer from './components/Footer.vue';
   <StatsSection />
   <TestimonialsSection />
   <CTASection />
+  <QRSection />
   <ContactSection />
   <Footer />
   
