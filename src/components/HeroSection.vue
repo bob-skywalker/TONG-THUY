@@ -100,7 +100,7 @@ onMounted(() => {
             style="animation-delay: 0.4s"
           >
             <div class="text-3xl md:text-4xl font-extrabold text-white mb-1">{{ stat.value }}</div>
-            <div class="text-xs font-semibold tracking-wider text-slate-400 uppercase">{{ stat.label }}</div>
+            <div class="text-xs font-semibold tracking-wider text-slate-300 uppercase">{{ stat.label }}</div>
           </div>
         </div>
       </div>

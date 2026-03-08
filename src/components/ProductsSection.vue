@@ -5,29 +5,29 @@ const activeTab = ref('projects')
 const selectedVideo = ref(null)
 
 const productVideos = [
-  { id: 'B1',  src: '/VIDEO/B1.MP4',  title: 'Tôn Bluescope Zacs',      desc: 'Tôn cao cấp nhập khẩu',          tag: 'Cao Cấp' },
-  { id: 'B2',  src: '/VIDEO/B2.MP4',  title: 'Tôn Màu Đa Dạng',         desc: 'Phong phú màu sắc, bền màu',     tag: 'Phổ Biến' },
-  { id: 'B3',  src: '/VIDEO/B3.MP4',  title: 'Tôn Xốp PU',              desc: 'Cách nhiệt — cách âm vượt trội', tag: 'Cách Nhiệt' },
-  { id: 'B4',  src: '/VIDEO/B4.MP4',  title: 'Tôn Cuộn Nguyên Liệu',    desc: 'Nhập khẩu chất lượng cao',       tag: 'Nguyên Liệu' },
-  { id: 'B6',  src: '/VIDEO/B6.MP4',  title: 'Xà Gồ C — Z Định Hình',   desc: 'Sản xuất theo yêu cầu',          tag: 'Gia Công' },
-  { id: 'B7',  src: '/VIDEO/B7.MP4',  title: 'Máng Xối Chuyên Dụng',    desc: 'Thoát nước mái hiệu quả',        tag: 'Phụ Kiện' },
-  { id: 'B9',  src: '/VIDEO/B9.MP4',  title: 'Chấn Diềm Gia Công',      desc: 'Gia công chính xác theo bản vẽ', tag: 'Gia Công' },
-  { id: 'B10', src: '/VIDEO/B10.MP4', title: 'Tôn Nhà Kính Nông Nghiệp', desc: 'Vật tư nhà kính chuyên dụng',   tag: 'Nông Nghiệp' },
-  { id: 'B11', src: '/VIDEO/B11.MP4', title: 'Uốn Sắt Định Hình',       desc: 'Các hình U, V, O theo đơn hàng', tag: 'Gia Công' },
-  { id: 'B12', src: '/VIDEO/B12.MP4', title: 'Tôn Lạnh Hoa Sen',        desc: 'Đại lý chính thức Hoa Sen',      tag: 'Tôn Lạnh' },
-  { id: 'B13', src: '/VIDEO/B13.MP4', title: 'Sản Phẩm Đặc Biệt',       desc: 'Sản xuất theo yêu cầu riêng',   tag: 'Đặc Chế' },
+  { id: 'B1',  src: '/VIDEO/B1.MP4',  title: 'Đội Ngũ Tòng Thuỷ',        desc: 'Đội ngũ tận tâm — phục vụ khách hàng 24/7',              tag: 'Đội Ngũ' },
+  { id: 'B2',  src: '/VIDEO/B2.MP4',  title: 'Hội Thảo Tôn Zacs',        desc: 'Chương trình đào tạo kỹ thuật viên lắp đặt chuyên nghiệp', tag: 'Đào Tạo' },
+  { id: 'B3',  src: '/VIDEO/B3.MP4',  title: 'Chương Trình Ưu Đãi',      desc: 'Tặng quà tri ân — hội thảo nhà thầu đẳng cấp Tôn Zacs',  tag: 'Sự Kiện' },
+  { id: 'B4',  src: '/VIDEO/B4.MP4',  title: 'Gia Công Xà Gồ',           desc: 'Sản xuất xà gồ C, Z thép nguội tại xưởng theo đơn hàng', tag: 'Gia Công' },
+  { id: 'B6',  src: '/VIDEO/B6.MP4',  title: 'Tôn Lợp Bluescope',        desc: 'Tấm lợp sóng vuông cao cấp — bề mặt bóng, bền màu lâu năm', tag: 'Tôn Lợp' },
+  { id: 'B7',  src: '/VIDEO/B7.MP4',  title: 'Chứng Nhận Đại Lý',        desc: 'Trao chứng nhận đại lý chính hãng Bluescope Zacs uy tín', tag: 'Chứng Nhận' },
+  { id: 'B9',  src: '/VIDEO/B9.MP4',  title: 'Showroom Tòng Thuỷ',       desc: 'Cửa hàng đại lý Tôn Bluescope Zacs tại Đơn Dương, Lâm Đồng', tag: 'Cửa Hàng' },
+  { id: 'B10', src: '/VIDEO/B10.MP4', title: 'Roadshow Tôn Zacs',        desc: 'Sự kiện giới thiệu sản phẩm lưu động khắp khu vực Tây Nguyên', tag: 'Sự Kiện' },
+  { id: 'B11', src: '/VIDEO/B11.MP4', title: 'Hội Nghị Khách Hàng',      desc: 'Hội nghị nhà thầu Tòng Thuỷ — hàng trăm đại biểu tham dự', tag: 'Hội Nghị' },
+  { id: 'B12', src: '/VIDEO/B12.MP4', title: 'Xe Lưu Động Tôn Zacs',     desc: 'Trung tâm đào tạo di động — mang sản phẩm đến tận công trình', tag: 'Lưu Động' },
+  { id: 'B13', src: '/VIDEO/B13.MP4', title: 'Lễ Trao Thưởng',           desc: 'Vinh danh nhà thầu xuất sắc — quà tặng chính hãng Tôn Zacs', tag: 'Trao Thưởng' },
 ]
 
 const projectVideos = [
-  { id: 'A1',  src: '/VIDEO/A1.MP4',  title: 'Nhà Xưởng Công Nghiệp',  desc: 'Kết cấu thép mái tôn',        tag: 'Công Nghiệp' },
-  { id: 'A2',  src: '/VIDEO/A2.MP4',  title: 'Kho Hàng Thương Mại',    desc: 'Mái che rộng, bền vững',      tag: 'Thương Mại' },
-  { id: 'A3',  src: '/VIDEO/A3.MP4',  title: 'Nhà Dân Dụng',           desc: 'Mái tôn màu cao cấp',         tag: 'Dân Dụng' },
-  { id: 'A4',  src: '/VIDEO/A4.MP4',  title: 'Công Trình Nông Nghiệp', desc: 'Nhà kính, nhà lưới',          tag: 'Nông Nghiệp' },
-  { id: 'A5',  src: '/VIDEO/A5.MP4',  title: 'Nhà Kính Trồng Rau',     desc: 'Hệ thống khung — tôn PC',     tag: 'Nhà Kính' },
-  { id: 'A6',  src: '/VIDEO/A6.MP4',  title: 'Mái Nhà Hiện Đại',       desc: 'Thiết kế tinh tế, sang trọng', tag: 'Dân Dụng' },
-  { id: 'A7',  src: '/VIDEO/A7.MP4',  title: 'Tòa Nhà Thương Mại',     desc: 'Tôn PU cách nhiệt tổng thể',  tag: 'Thương Mại' },
-  { id: 'A9',  src: '/VIDEO/A9.MP4',  title: 'Công Trình Quy Mô Lớn',  desc: 'Nhà máy, xí nghiệp lớn',     tag: 'Quy Mô Lớn' },
-  { id: 'A10', src: '/VIDEO/A10.MP4', title: 'Dự Án Tiêu Biểu',        desc: 'Hoàn thiện đúng tiến độ',     tag: 'Nổi Bật' },
+  { id: 'A1',  src: '/VIDEO/A1.MP4',  title: 'Nhà Máy Sản Xuất',    desc: 'Xưởng cán tôn hiện đại của Công Ty Tôn Thép Tòng Thuỷ',       tag: 'Nhà Máy' },
+  { id: 'A2',  src: '/VIDEO/A2.MP4',  title: 'Dây Chuyền Tôn PU',   desc: 'Máy sản xuất tôn xốp PU cách nhiệt — sản lượng lớn, ổn định', tag: 'Sản Xuất' },
+  { id: 'A3',  src: '/VIDEO/A3.MP4',  title: 'Máy Cán Xà Gồ',      desc: 'Dây chuyền cán xà gồ C, Z hiện đại — đặt hàng theo kích thước', tag: 'Gia Công' },
+  { id: 'A4',  src: '/VIDEO/A4.MP4',  title: 'Văn Phòng Tòng Thuỷ', desc: 'Trụ sở công ty — chất lượng hàng đầu, màu sắc phong phú',     tag: 'Văn Phòng' },
+  { id: 'A5',  src: '/VIDEO/A5.MP4',  title: 'Thương Hiệu Tòng Thuỷ', desc: 'Công ty TNHH Tôn Thép Tòng Thuỷ — uy tín hơn 10 năm',      tag: 'Thương Hiệu' },
+  { id: 'A6',  src: '/VIDEO/A6.MP4',  title: 'Thiết Bị Nhà Máy',    desc: 'Máy móc công nghệ cao tại Nhà Máy Tôn Tòng Thuỷ',             tag: 'Thiết Bị' },
+  { id: 'A7',  src: '/VIDEO/A7.MP4',  title: 'Chi Nhánh Đức Trọng', desc: 'Đại lý Tôn Bluescope Zacs tại Phú Thạnh, Hiệp Thạnh, Đức Trọng', tag: 'Chi Nhánh' },
+  { id: 'A9',  src: '/VIDEO/A9.MP4',  title: 'Dây Chuyền Tự Động',  desc: 'Hệ thống máy CNC điều khiển kỹ thuật số — độ chính xác cao',  tag: 'Tự Động Hóa' },
+  { id: 'A10', src: '/VIDEO/A10.MP4', title: 'Kho Nguyên Liệu',     desc: 'Kho tôn cuộn đa màu sắc — xanh, trắng, đỏ, vàng, xám sẵn hàng', tag: 'Kho Hàng' },
 ]
 
 const activeVideos = computed(() =>
@@ -92,7 +92,7 @@ onUnmounted(() => {
           <br />
           <span class="text-gradient-light">Tiêu Biểu</span>
         </h2>
-        <p class="text-slate-400 max-w-xl mx-auto">
+        <p class="text-slate-300 max-w-xl mx-auto">
           Khám phá danh mục sản phẩm và các công trình thực tế chúng tôi đã thực hiện trên khắp khu vực Lâm Đồng.
         </p>
       </div>
@@ -111,7 +111,7 @@ onUnmounted(() => {
               'px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200',
               activeTab === tab.key
                 ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
-                : 'text-slate-400 hover:text-white',
+                : 'text-slate-300 hover:text-white',
             ]"
           >
             <span class="mr-1.5">{{ tab.icon }}</span>{{ tab.label }}
@@ -176,7 +176,7 @@ onUnmounted(() => {
             <!-- Info -->
             <div class="absolute bottom-0 left-0 right-0 p-5 translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
               <h3 class="text-white font-bold text-base mb-0.5">{{ video.title }}</h3>
-              <p class="text-slate-400 text-sm">{{ video.desc }}</p>
+              <p class="text-slate-300 text-sm">{{ video.desc }}</p>
             </div>
           </div>
         </div>
@@ -225,7 +225,7 @@ onUnmounted(() => {
                   {{ selectedVideo.tag }}
                 </span>
                 <h3 class="text-white text-xl font-bold">{{ selectedVideo.title }}</h3>
-                <p class="text-slate-400 mt-1">{{ selectedVideo.desc }}</p>
+                <p class="text-slate-300 mt-1">{{ selectedVideo.desc }}</p>
               </div>
               <a href="#contact" class="btn-primary text-sm flex-shrink-0 ml-6" @click="closeModal">
                 Yêu Cầu Báo Giá
