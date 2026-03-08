@@ -1,276 +1,207 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
+import logoImage from '../assets/logo.png'
 import zaloLogo from '../assets/Zalo-Logo.png'
 
-const props = defineProps({
-   brandLogo: {
-    type: String,
-    default: null
-   },
-   brandName: {
-    type: String,
-    default: 'TÒNG THUỶ'
-   },
-   logoSize: {
-    type: String,
-    default: 'gigantic'
-   },
-   navItems: {
-    type: Array,
-    default: () => [
-        { name: 'Giới Thiệu', href: '#story'}, 
-        { name: 'Sản Phẩm', href: '#products'},
-        { name: 'Tin Tức', href: '#news'},
-        { name: 'Liên Hệ', href: '#contact'},
-    ]
-   }
-});
-
-// Logo size classes (same as before)
-const logoSizeClasses = {
-  large: 'h-16 w-16 sm:h-20 sm:w-20 md:h-24 md:w-24',
-  xl: 'h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28',
-  xxl: 'h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32',
-  massive: 'h-28 w-28 sm:h-32 sm:w-32 md:h-36 md:w-36',
-  gigantic: 'h-32 w-32 sm:h-36 sm:w-36 md:h-40 md:w-40 lg:h-44 lg:w-44',
-  colossal: 'h-36 w-36 sm:h-40 sm:w-40 md:h-44 md:w-44 lg:h-48 lg:w-48',
-  titan: 'h-40 w-40 sm:h-44 sm:w-44 md:h-48 md:w-48 lg:h-52 lg:w-52 xl:h-56 xl:w-56'
-}
-
-// Social media icons (high quality SVGs)
-const socialIcons = [
-    {
-        name: 'Facebook',
-        icon: `<svg class="w-10 h-10 transition-all duration-300 ease-in-out" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
-        url: 'https://www.facebook.com/share/1NtF39Gdm4/?mibextid=wwXIfr'
-    },
-    {
-        name: 'Messenger',
-        icon: `<svg class="w-10 h-10 transition-all duration-300 ease-in-out" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.13 3.26L19.764 8.1l-6.573 6.863z"/></svg>`,
-        url: 'https://m.me/ton.thep.tong.thuy'
-    },
-    {
-        name: 'Zalo',
-        logoImage: zaloLogo,
-        url: '#qr-section',
-        isInternal: true
-    },
-    
-]
-
-// Reactive state for mobile menu
+const isScrolled = ref(false)
 const isMobileMenuOpen = ref(false)
 
-// Track current URL hash reactively
-const currentHash = ref(window.location.hash)
+const navItems = [
+  { name: 'Giới Thiệu', href: '#about' },
+  { name: 'Sản Phẩm', href: '#products' },
+  { name: 'Dịch Vụ', href: '#services' },
+  { name: 'Liên Hệ', href: '#contact' },
+]
 
-// Update current hash when URL changes
-const updateHash = () => {
-    currentHash.value = window.location.hash
+const socialLinks = [
+  {
+    name: 'Facebook',
+    url: 'https://www.facebook.com/share/1NtF39Gdm4/?mibextid=wwXIfr',
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`,
+  },
+  {
+    name: 'Messenger',
+    url: 'https://m.me/ton.thep.tong.thuy',
+    icon: `<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 4.975 0 11.111c0 3.497 1.745 6.616 4.472 8.652V24l4.086-2.242c1.09.301 2.246.464 3.442.464 6.627 0 12-4.974 12-11.111C24 4.975 18.627 0 12 0zm1.191 14.963l-3.055-3.26-5.963 3.26L10.732 8.1l3.13 3.26L19.764 8.1l-6.573 6.863z"/></svg>`,
+  },
+  {
+    name: 'Zalo',
+    url: '#contact',
+    logoImage: zaloLogo,
+    isInternal: true,
+  },
+]
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 60
 }
 
-// Computed property to check if an item is active based on current URL hash
-const isActiveItem = (itemName) => {
-    const hashMap = {
-        'Home': '',
-        'Features': '#features',
-        'Solutions': '#solutions', 
-        'Testimonials': '#testimonials',
-        'Contact': '#contact'
-    }
-    
-    const itemHash = hashMap[itemName]
-    return itemHash === currentHash.value || (itemName === 'Home' && (currentHash.value === '' || currentHash.value === '#'))
+const closeMobileMenu = () => {
+  isMobileMenuOpen.value = false
 }
 
-// Listen for hash changes
 onMounted(() => {
-    window.addEventListener('hashchange', updateHash)
-    updateHash()
+  window.addEventListener('scroll', handleScroll, { passive: true })
 })
-
 onUnmounted(() => {
-    window.removeEventListener('hashchange', updateHash)
+  window.removeEventListener('scroll', handleScroll)
 })
-
-// Methods
-const toggleMobileMenu = () => {
-    isMobileMenuOpen.value = !isMobileMenuOpen.value
-}
-
-const handleNavClick = (event, item) => {
-    console.log('Navigating to:', item.name)
-    isMobileMenuOpen.value = false 
-}
 </script>
 
 <template>
-    <nav class="bg-white shadow-lg border-b border-gray-200">
-        <div class="px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-28 sm:h-32 md:h-36 lg:h-40 xl:h-44">
-                
-                <!-- GIGANTIC LOGO - ABSOLUTE FAR LEFT -->
-                <div class="flex items-center">
-                    <img 
-                        v-if="brandLogo"
-                        :src="brandLogo"
-                        alt="Logo"
-                        :class="[
-                            'rounded-xl object-contain transition-all duration-500 hover:scale-110 drop-shadow-2xl hover:drop-shadow-3xl cursor-pointer',
-                            logoSizeClasses[logoSize]
-                        ]"
-                    >
-                </div>
+  <header
+    :class="[
+      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+      isScrolled
+        ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100'
+        : 'bg-transparent',
+    ]"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 md:h-24">
 
-                <!-- NAVIGATION + SOCIAL ICONS - ABSOLUTE FAR RIGHT -->
-                <div class="hidden md:flex flex-col items-end space-y-4">
-                    <!-- Navigation Items -->
-                    <div class="flex items-center space-x-6 lg:space-x-8">
-                        <a
-                            v-for="item in navItems"
-                            :key="item.name"
-                            :href="item.href"
-                            @click="handleNavClick($event, item)"
-                            :class="[
-                                'px-5 py-3 rounded-xl text-lg font-semibold transition-all duration-300 cursor-pointer transform hover:scale-105',
-                                isActiveItem(item.name)
-                                ? 'text-blue-600 bg-blue-50 shadow-lg'
-                                : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50 hover:shadow-md'
-                            ]"
-                        >
-                            {{ item.name }}
-                        </a>
-                    </div>
-                    
-                    <!-- Social Media Icons -->
-                    <div class="flex items-center space-x-4">
-                        <a
-                            v-for="social in socialIcons"
-                            :key="social.name"
-                            :href="social.url"
-                            :target="social.isInternal ? '_self' : '_blank'"
-                            :rel="social.isInternal ? '' : 'noopener noreferrer'"
-                            class="social-elegant text-blue-600 hover:text-blue-800 p-3"
-                            :title="social.name"
-                        >
-                            <!-- Use logo image if available, otherwise use SVG icon -->
-                            <img 
-                                v-if="social.logoImage" 
-                                :src="social.logoImage" 
-                                :alt="social.name + ' Logo'"
-                                class="w-10 h-10 transition-all duration-300 ease-in-out object-contain"
-                            >
-                            <div v-else v-html="social.icon"></div>
-                        </a>
-                    </div>
-                </div>
+        <!-- Logo -->
+        <a href="#home" class="flex-shrink-0">
+          <img
+            :src="logoImage"
+            alt="Tòng Thuỷ Logo"
+            :class="[
+              'object-contain transition-all duration-300',
+              isScrolled ? 'h-14 w-14' : 'h-16 w-16 md:h-20 md:w-20',
+            ]"
+          />
+        </a>
 
-                <!-- Mobile menu button - ABSOLUTE FAR RIGHT -->
-                <div class="md:hidden">
-                    <button
-                        @click="toggleMobileMenu"
-                        class="inline-flex items-center justify-center p-4 rounded-xl text-gray-700 hover:text-blue-600 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200"
-                    >
-                        <span class="sr-only">Open main menu</span>
-                        <svg 
-                            class="h-10 w-10" 
-                            fill="none" 
-                            viewBox="0 0 24 24" 
-                            stroke="currentColor"
-                        >
-                            <path 
-                                v-if="!isMobileMenuOpen"
-                                stroke-linecap="round" 
-                                stroke-linejoin="round" 
-                                stroke-width="2" 
-                                d="M4 6h16M4 12h16M4 18h16" 
-                            />
-                            <path 
-                                v-else
-                                stroke-linecap="round" 
-                                stroke-linejoin="round" 
-                                stroke-width="2" 
-                                d="M6 18L18 6M6 6l12 12" 
-                            />
-                        </svg>
-                    </button>
-                </div>
-            </div>
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a
+            v-for="item in navItems"
+            :key="item.name"
+            :href="item.href"
+            :class="[
+              'nav-link text-sm font-semibold tracking-wide transition-colors duration-200',
+              isScrolled ? 'text-slate-700 hover:text-blue-600' : 'text-white/90 hover:text-white',
+            ]"
+          >
+            {{ item.name }}
+          </a>
+        </nav>
 
-            <!-- Mobile Navigation Menu -->
-            <div 
-                v-show="isMobileMenuOpen"
-                class="md:hidden py-8 border-t border-gray-200"
+        <!-- Social + CTA (Desktop) -->
+        <div class="hidden md:flex items-center gap-4">
+          <!-- Social icons -->
+          <div class="flex items-center gap-2">
+            <a
+              v-for="social in socialLinks"
+              :key="social.name"
+              :href="social.url"
+              :target="social.isInternal ? '_self' : '_blank'"
+              :rel="social.isInternal ? '' : 'noopener noreferrer'"
+              :title="social.name"
+              :class="[
+                'p-2 rounded-lg transition-colors duration-200',
+                isScrolled
+                  ? 'text-slate-600 hover:text-blue-600 hover:bg-blue-50'
+                  : 'text-white/80 hover:text-white hover:bg-white/15',
+              ]"
             >
-                <div class="flex flex-col space-y-4">
-                    <a
-                        v-for="item in navItems"
-                        :key="item.name"
-                        :href="item.href"
-                        @click="handleNavClick($event, item)"
-                        :class="[
-                            'px-6 py-4 rounded-xl text-xl font-semibold transition-all duration-200 cursor-pointer',
-                            isActiveItem(item.name)
-                            ? 'text-blue-600 bg-blue-50 shadow-lg'
-                            : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
-                        ]"
-                    >
-                        {{ item.name }}
-                    </a>
-                    
-                    <!-- Mobile Social Icons -->
-                    <div class="flex justify-center space-x-6 pt-4 border-t border-gray-200 mt-4">
-                        <a
-                            v-for="social in socialIcons"
-                            :key="social.name"
-                            :href="social.url"
-                            :target="social.isInternal ? '_self' : '_blank'"
-                            :rel="social.isInternal ? '' : 'noopener noreferrer'"
-                            class="social-elegant text-blue-600 hover:text-blue-800 p-3"
-                            :title="social.name"
-                        >
-                            <!-- Use logo image if available, otherwise use SVG icon -->
-                            <img 
-                                v-if="social.logoImage" 
-                                :src="social.logoImage" 
-                                :alt="social.name + ' Logo'"
-                                class="w-10 h-10 transition-all duration-300 ease-in-out object-contain"
-                            >
-                            <div v-else v-html="social.icon"></div>
-                        </a>
-                    </div>
-                </div>
-            </div>
+              <img
+                v-if="social.logoImage"
+                :src="social.logoImage"
+                :alt="social.name"
+                class="w-5 h-5 object-contain grayscale"
+              />
+              <span v-else v-html="social.icon" />
+            </a>
+          </div>
+
+          <!-- CTA button -->
+          <a
+            href="tel:0947196779"
+            :class="[
+              'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200',
+              isScrolled
+                ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-sm'
+                : 'bg-white text-blue-700 hover:bg-blue-50 shadow-lg',
+            ]"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            Gọi Ngay
+          </a>
         </div>
-    </nav>
+
+        <!-- Mobile Hamburger -->
+        <button
+          class="md:hidden p-2 rounded-lg transition-colors"
+          :class="isScrolled ? 'text-slate-700' : 'text-white'"
+          @click="isMobileMenuOpen = !isMobileMenuOpen"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              v-if="!isMobileMenuOpen"
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+            <path
+              v-else
+              stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <Transition
+      enter-active-class="transition duration-200 ease-out"
+      enter-from-class="opacity-0 -translate-y-2"
+      enter-to-class="opacity-100 translate-y-0"
+      leave-active-class="transition duration-150 ease-in"
+      leave-from-class="opacity-100 translate-y-0"
+      leave-to-class="opacity-0 -translate-y-2"
+    >
+      <div
+        v-show="isMobileMenuOpen"
+        class="md:hidden bg-white border-t border-gray-100 shadow-lg"
+      >
+        <div class="max-w-7xl mx-auto px-4 py-6 space-y-1">
+          <a
+            v-for="item in navItems"
+            :key="item.name"
+            :href="item.href"
+            class="block px-4 py-3 text-slate-700 font-semibold rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-colors"
+            @click="closeMobileMenu"
+          >
+            {{ item.name }}
+          </a>
+
+          <div class="pt-4 border-t border-gray-100 flex items-center gap-4 px-4">
+            <a
+              v-for="social in socialLinks"
+              :key="social.name"
+              :href="social.url"
+              :target="social.isInternal ? '_self' : '_blank'"
+              class="p-2 text-slate-600 hover:text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+              @click="closeMobileMenu"
+            >
+              <img v-if="social.logoImage" :src="social.logoImage" :alt="social.name" class="w-5 h-5 grayscale" />
+              <span v-else v-html="social.icon" />
+            </a>
+
+            <a
+              href="tel:0947196779"
+              class="ml-auto btn-primary text-sm py-2 px-5"
+              @click="closeMobileMenu"
+            >
+              Gọi Ngay
+            </a>
+          </div>
+        </div>
+      </div>
+    </Transition>
+  </header>
 </template>
-
-<style scoped>
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.social-pulse {
-  animation: pulse-glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes pulse-glow {
-  0% { 
-    transform: scale(1);
-    filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.3));
-  }
-  100% { 
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6));
-  }
-}
-</style>
- 

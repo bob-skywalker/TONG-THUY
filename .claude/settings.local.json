@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl:*)",
+      "Bash(npm run:*)",
+      "Bash(ffmpeg:*)",
+      "Bash(ls -lh /Users/bozhong/Desktop/TONG-THUY/VIDEO/*.MP4)",
+      "Bash(ls:*)",
+      "Bash(ffprobe:*)",
+      "Bash(du -sh /Users/bozhong/Desktop/TONG-THUY/VIDEO/*.MP4)",
+      "Read(//Users/bozhong/Desktop/TONG-THUY/**)",
+      "Bash(du -ch /Users/bozhong/Desktop/TONG-THUY/VIDEO/1.MP4 /Users/bozhong/Desktop/TONG-THUY/VIDEO/B*.MP4 /Users/bozhong/Desktop/TONG-THUY/VIDEO/A*.MP4)",
+      "Bash(npm install:*)",
+      "Bash(firebase:*)",
+      "Bash(npm uninstall:*)"
+    ]
+  }
+}

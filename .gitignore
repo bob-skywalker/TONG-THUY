@@ -138,6 +138,10 @@ $RECYCLE.BIN/
 firebase-debug.log*
 firestore-debug.log*
 
+# Video files (large binaries - copy from VIDEO_COMPRESSED/ before deploying)
+public/VIDEO/
+VIDEO_COMPRESSED/
+
 # TailwindCSS
 # Uncomment if you're generating CSS files
 # tailwind.config.js.backup
