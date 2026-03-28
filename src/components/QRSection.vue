@@ -60,7 +60,7 @@ onMounted(() => {
             <span class="text-gradient-light">Báo Giá Nhanh</span>
           </span>
         </h2>
-        <p class="text-slate-300 text-sm sm:text-base max-w-md mx-auto leading-relaxed">
+        <p class="text-slate-200 text-base sm:text-lg max-w-md mx-auto leading-relaxed">
           Quét mã QR bằng Zalo để nhắn tin trực tiếp.<br class="hidden sm:block"/>
           Phản hồi trong <span class="text-blue-400 font-semibold">vài phút</span>.
         </p>
@@ -118,10 +118,10 @@ onMounted(() => {
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                   <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
                 </span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-300">{{ branch.location }}</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-200">{{ branch.location }}</span>
               </div>
 
-              <p class="text-xs text-slate-500 mb-3">{{ branch.address }}</p>
+              <p class="text-xs text-slate-400 mb-3">{{ branch.address }}</p>
 
               <!-- Phone -->
               <a
@@ -145,7 +145,7 @@ onMounted(() => {
                   </svg>
                   Gọi Ngay
                 </a>
-                <div class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 text-slate-300 text-xs font-medium bg-white/[0.03]">
+                <div class="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 text-slate-200 text-xs font-medium bg-white/[0.03]">
                   <img :src="zaloLogo" alt="Zalo" class="w-3.5 h-3.5 object-contain opacity-80" />
                   Quét QR → Zalo
                 </div>

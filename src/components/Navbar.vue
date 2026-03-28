@@ -8,8 +8,8 @@ const isMobileMenuOpen = ref(false)
 
 const navItems = [
   { name: 'Giới Thiệu', href: '#about'    },
-  { name: 'Sản Phẩm',   href: '#products' },
-  { name: 'Dịch Vụ',    href: '#services' },
+  { name: 'Sản Xuất',   href: '#products' },
+  { name: 'Sản Phẩm',    href: '#services' },
   { name: 'Liên Hệ',    href: '#contact'  },
 ]
 
@@ -56,7 +56,7 @@ onUnmounted(() => { window.removeEventListener('scroll', handleScroll); document
               TÒNG THUỶ
             </p>
             <p class="text-[9px] font-semibold tracking-[0.22em] uppercase mt-0.5 text-white/40">
-              Vật Liệu Xây Dựng
+              Công Ty Tôn Thép
             </p>
           </div>
         </a>

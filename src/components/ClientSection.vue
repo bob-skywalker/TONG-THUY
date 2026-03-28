@@ -6,6 +6,7 @@ import blueScopeLogo from '../assets/blueScope.png'
 import tongDongALogo from '../assets/tonDongA.png'
 import tonNamKimLogo from '../assets/tonNamKim.png'
 import tonPominaLogo from '../assets/tonPomina.png'
+import pomaxxLogo    from '../assets/Pomaxx.png'
 
 const isVisible = ref(false)
 
@@ -16,14 +17,15 @@ const partners = [
   { name: 'Tôn Đông Á',  logo: tongDongALogo   },
   { name: 'Tôn Nam Kim',  logo: tonNamKimLogo   },
   { name: 'Tôn Pomina',   logo: tonPominaLogo   },
+  { name: 'Pomaxx',       logo: pomaxxLogo      },
 ]
 
 /* Duplicate for seamless 50% loop */
 const row1 = [...partners, ...partners, ...partners, ...partners]
 
 const stats = [
-  { value: '6',    suffix: '',  label: 'Thương Hiệu Uy Tín' },
-  { value: '10',   suffix: '+', label: 'Năm Phân Phối'       },
+  { value: '7',    suffix: '',  label: 'Thương Hiệu Uy Tín' },
+  { value: '30',   suffix: '+', label: 'Năm Phân Phối'       },
   { value: '100',  suffix: '%', label: 'Hàng Chính Hãng'     },
 ]
 
@@ -38,7 +40,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="about" class="relative py-24 overflow-hidden bg-slate-950">
+  <section id="about" class="relative py-24 overflow-hidden bg-slate-900">
 
     <!-- Ambient glow top -->
     <div class="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-blue-600/10 blur-3xl" />
@@ -70,7 +72,7 @@ onMounted(() => {
           <span class="text-gradient">Những Thương Hiệu Hàng Đầu</span>
         </h2>
 
-        <p class="text-slate-300 max-w-xl mx-auto text-base sm:text-lg leading-relaxed">
+        <p class="text-slate-200 max-w-xl mx-auto text-lg font-medium leading-relaxed">
           Phân phối tôn thép chính hãng từ các tập đoàn uy tín nhất<br class="hidden md:block">
           Việt Nam và quốc tế — chất lượng đảm bảo, giá tốt nhất.
         </p>
@@ -116,7 +118,7 @@ onMounted(() => {
           <p class="text-4xl sm:text-5xl font-extrabold text-white tabular-nums">
             {{ s.value }}<span class="text-blue-400">{{ s.suffix }}</span>
           </p>
-          <p class="mt-2 text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-500">
+          <p class="mt-2 text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-400">
             {{ s.label }}
           </p>
         </div>

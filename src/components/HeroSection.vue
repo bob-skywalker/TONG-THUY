@@ -5,7 +5,7 @@ const isLoaded = ref(false)
 
 const stats = [
   { value: '500+', label: 'Khách Hàng' },
-  { value: '10+', label: 'Năm Kinh Nghiệm' },
+  { value: '30+', label: 'Năm Kinh Nghiệm' },
   { value: '2', label: 'Chi Nhánh' },
   { value: '6', label: 'Dòng Sản Phẩm' },
 ]
@@ -58,9 +58,9 @@ onMounted(() => {
             :class="['text-5xl sm:text-6xl md:text-7xl font-extrabold leading-tight mb-6 text-white', isLoaded ? 'animate-fade-up' : 'opacity-0']"
             style="animation-delay: 0.1s"
           >
-            Vật Liệu
+            Công Ty
             <br />
-            <span class="text-gradient-light">Xây Dựng</span>
+            <span class="text-gradient-light">Tôn Thép</span>
             <br />
             Tòng Thuỷ
           </h1>
