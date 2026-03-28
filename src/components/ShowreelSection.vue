@@ -1,25 +1,22 @@
 <script setup>
 import { ref } from 'vue'
-import thumbnail from '../assets/official-thumb.jpg'
+import introThumbnail from '../assets/intro-thumb.jpg'
 
 const playing  = ref(false)
 const videoRef = ref(null)
 
 const play = () => {
   playing.value = true
-  // Let the DOM update, then play + show controls
   setTimeout(() => {
-    if (videoRef.value) {
-      videoRef.value.play().catch(() => {})
-    }
+    if (videoRef.value) videoRef.value.play().catch(() => {})
   }, 50)
 }
 </script>
 
 <template>
-  <section class="relative bg-[#070D1F]">
+  <section class="relative bg-[#0d1526]">
 
-    <!-- Section label -->
+    <!-- Introduction video label -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-7">
       <div class="flex items-center gap-3">
         <span class="block w-8 h-0.5 bg-blue-400 rounded-full" />
@@ -31,10 +28,10 @@ const play = () => {
       </h2>
     </div>
 
-    <!-- Video player — full width, no side padding -->
-    <div class="relative w-full bg-black" style="aspect-ratio: 16/9;">
+    <!-- Video player — padded -->
+    <div class="px-4 sm:px-6 lg:px-8 pb-14">
+    <div class="relative w-full bg-black rounded-2xl overflow-hidden" style="aspect-ratio: 16/9;">
 
-      <!-- Thumbnail + play overlay (shown before play) -->
       <Transition
         leave-active-class="transition duration-400 ease-in"
         leave-from-class="opacity-100"
@@ -47,7 +44,7 @@ const play = () => {
         >
           <!-- Thumbnail -->
           <img
-            :src="thumbnail"
+            :src="introThumbnail"
             alt="Video giới thiệu Tòng Thuỷ"
             class="w-full h-full object-cover"
             loading="lazy"
@@ -60,9 +57,7 @@ const play = () => {
           <!-- Play button -->
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="relative flex items-center justify-center">
-              <!-- Pulse ring -->
               <div class="absolute w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-white/10 animate-ping" style="animation-duration: 2s;" />
-              <!-- Button circle -->
               <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-white/95 group-hover:bg-white group-hover:scale-110 transition-all duration-300 flex items-center justify-center shadow-2xl shadow-black/50">
                 <svg class="w-8 h-8 sm:w-9 sm:h-9 text-blue-600 ml-1" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M8 5v14l11-7z" />
@@ -71,7 +66,6 @@ const play = () => {
             </div>
           </div>
 
-          <!-- Bottom bar caption -->
           <div class="absolute bottom-0 left-0 right-0 px-6 sm:px-10 pb-6 sm:pb-8">
             <p class="text-white/50 text-xs sm:text-sm font-medium">
               Nhấn để xem video giới thiệu đầy đủ
@@ -80,7 +74,6 @@ const play = () => {
         </div>
       </Transition>
 
-      <!-- Actual video (rendered always, shown when playing) -->
       <video
         ref="videoRef"
         class="absolute inset-0 w-full h-full object-contain bg-black"
@@ -90,13 +83,11 @@ const play = () => {
         preload="metadata"
         @ended="playing = false"
       >
-        <source src="/VIDEO/OFFICIAL_VIDEO.mp4" type="video/mp4" />
+        <source src="/VIDEO/Introduction_video.mp4" type="video/mp4" />
       </video>
 
     </div>
-
-    <!-- Bottom spacer -->
-    <div class="h-14" />
+    </div>
 
   </section>
 </template>

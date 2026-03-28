@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="testimonials" class="relative py-24 md:py-32 bg-[#070D1F] overflow-hidden">
+  <section id="testimonials" class="relative py-24 md:py-32 bg-[#0d1526] overflow-hidden">
 
     <!-- Ambient glows -->
     <div class="pointer-events-none absolute inset-0">
@@ -65,7 +65,7 @@ onMounted(() => {
           Khách Hàng Nói Gì<br />
           <span class="text-gradient-light">Về Chúng Tôi?</span>
         </h2>
-        <p class="text-slate-300 max-w-md mx-auto text-sm sm:text-base leading-relaxed">
+        <p class="text-slate-200 max-w-md mx-auto text-lg font-medium leading-relaxed">
           Hơn 500 khách hàng trên khắp Lâm Đồng và Tây Nguyên tin tưởng Tòng Thuỷ.
         </p>
       </div>
@@ -98,7 +98,7 @@ onMounted(() => {
           </div>
 
           <!-- Quote -->
-          <blockquote class="text-slate-300 text-[14px] leading-relaxed mb-8">
+          <blockquote class="text-slate-200 text-[14px] leading-relaxed mb-8">
             "{{ t.text }}"
           </blockquote>
 
@@ -107,7 +107,7 @@ onMounted(() => {
             <img :src="t.avatar" :alt="t.name" class="w-10 h-10 rounded-full object-cover ring-1 ring-white/15 flex-shrink-0" />
             <div>
               <p class="font-bold text-white text-sm leading-none mb-1">{{ t.name }}</p>
-              <p class="text-slate-500 text-xs">{{ t.location }}</p>
+              <p class="text-slate-400 text-xs">{{ t.location }}</p>
             </div>
           </div>
         </div>

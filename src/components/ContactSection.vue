@@ -62,7 +62,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="contact" class="relative bg-[#070D1F] overflow-hidden">
+  <section id="contact" class="relative bg-[#0d1526] overflow-hidden">
 
     <!-- Ambient glow -->
     <div class="pointer-events-none absolute inset-0">
@@ -84,7 +84,7 @@ onMounted(() => {
             Sẵn Sàng<br />
             <span class="text-gradient-light">Tư Vấn Ngay</span>
           </h2>
-          <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-10 max-w-sm">
+          <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-10 max-w-sm">
             Đội ngũ chuyên nghiệp của chúng tôi sẵn sàng báo giá nhanh chóng, chính xác cho mọi công trình.
           </p>
 
@@ -103,10 +103,10 @@ onMounted(() => {
               <div class="flex-1 min-w-0">
                 <span class="text-[10px] font-bold text-blue-400 uppercase tracking-wider">{{ loc.label }}</span>
                 <p class="font-semibold text-white text-sm mt-0.5">{{ loc.address }}</p>
-                <p class="text-slate-400 text-xs mb-2">{{ loc.city }}</p>
+                <p class="text-slate-300 text-xs mb-2">{{ loc.city }}</p>
                 <div class="flex flex-wrap items-center gap-x-3 gap-y-1">
                   <a :href="`tel:${loc.phone.replace(/\s/g, '')}`" class="text-blue-400 hover:text-blue-300 font-bold text-sm transition-colors">{{ loc.phone }}</a>
-                  <span class="text-slate-400 text-xs">{{ loc.hours }}</span>
+                  <span class="text-slate-300 text-xs">{{ loc.hours }}</span>
                 </div>
               </div>
             </div>
@@ -121,7 +121,7 @@ onMounted(() => {
               <div :class="['w-8 h-8 rounded-lg flex items-center justify-center text-white flex-shrink-0', link.bg]" v-html="link.icon" />
               <div class="min-w-0">
                 <p class="text-white text-xs font-bold leading-none mb-0.5">{{ link.label }}</p>
-                <p class="text-slate-400 text-[10px]">{{ link.sub }}</p>
+                <p class="text-slate-300 text-[10px]">{{ link.sub }}</p>
               </div>
             </a>
           </div>
@@ -143,14 +143,14 @@ onMounted(() => {
                   </svg>
                 </div>
                 <p class="text-xl font-bold text-slate-900 mb-2">Cảm ơn bạn!</p>
-                <p class="text-slate-500 text-sm">Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.</p>
+                <p class="text-slate-400 text-sm">Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.</p>
               </div>
             </Transition>
 
             <template v-if="!submitted">
               <div class="mb-8">
                 <h3 class="text-2xl font-extrabold text-slate-900 mb-1">Gửi Yêu Cầu Báo Giá</h3>
-                <p class="text-slate-500 text-sm">Phản hồi trong vòng 30 phút trong giờ làm việc.</p>
+                <p class="text-slate-400 text-sm">Phản hồi trong vòng 30 phút trong giờ làm việc.</p>
               </div>
 
               <form @submit.prevent="handleSubmit" class="space-y-4">
@@ -179,7 +179,7 @@ onMounted(() => {
                 <button type="submit" class="btn-primary w-full py-4 text-[15px] rounded-xl mt-2">
                   Gửi Yêu Cầu
                 </button>
-                <p class="text-center text-xs text-slate-400 pt-1">
+                <p class="text-center text-xs text-slate-300 pt-1">
                   Hoặc gọi trực tiếp:
                   <a href="tel:0947196779" class="font-bold text-blue-600 hover:underline">0947 196 779</a>
                 </p>

@@ -2,10 +2,14 @@
 import logoImage from '../assets/logo.png'
 import zaloLogo  from '../assets/Zalo-Logo.png'
 
+const switchToProductsTab = () => {
+  window.dispatchEvent(new CustomEvent('set-products-tab', { detail: 'products' }))
+}
+
 const links = {
   services: [
-    { label: 'Tôn Bluescope Zacs',    href: '#products' },
-    { label: 'Tôn Xốp PU Cách Nhiệt', href: '#products' },
+    { label: 'Tôn Bluescope Zacs',    href: '#products', tab: true },
+    { label: 'Tôn Xốp PU Cách Nhiệt', href: '#products', tab: true },
     { label: 'Xà Gồ & Kèo Mái',      href: '#services' },
     { label: 'Vật Tư Nhà Kính',       href: '#services' },
     { label: 'Gia Công Chuyên Nghiệp', href: '#services' },
@@ -30,7 +34,7 @@ const social = [
 </script>
 
 <template>
-  <footer class="bg-[#040912]">
+  <footer class="bg-[#0a1020]">
 
     <!-- CTA Strip -->
     <div class="border-b border-white/[0.06]">
@@ -39,7 +43,7 @@ const social = [
           <p class="text-white font-extrabold text-xl sm:text-2xl leading-tight mb-1">
             Sẵn sàng bắt đầu dự án của bạn?
           </p>
-          <p class="text-slate-300 text-sm">Nhận báo giá miễn phí — phản hồi trong 30 phút.</p>
+          <p class="text-slate-200 text-sm">Nhận báo giá miễn phí — phản hồi trong 30 phút.</p>
         </div>
         <div class="flex flex-wrap gap-3 flex-shrink-0">
           <a href="#contact" class="btn-primary text-sm px-6 py-3 rounded-xl">Liên Hệ Ngay</a>
@@ -58,16 +62,16 @@ const social = [
             <img :src="logoImage" alt="Logo" class="w-12 h-12 object-contain" />
             <div>
               <p class="text-white font-extrabold text-lg leading-none tracking-wide">TÒNG THUỶ</p>
-              <p class="text-slate-400 text-xs tracking-wider mt-0.5">Vật Liệu Xây Dựng</p>
+              <p class="text-slate-300 text-xs tracking-wider mt-0.5">Vật Liệu Xây Dựng</p>
             </div>
           </div>
-          <p class="text-slate-300 text-sm leading-relaxed mb-7 max-w-sm">
+          <p class="text-slate-200 text-base leading-relaxed font-medium mb-7 max-w-sm">
             Chuyên phân phối tôn cao cấp Bluescope, tôn xốp PU cách nhiệt, xà gồ thép và các giải pháp vật liệu mái hoàn chỉnh cho khu vực Lâm Đồng và Tây Nguyên.
           </p>
           <div class="flex gap-2">
             <a
               v-for="s in social" :key="s.name" :href="s.url" :title="s.name" target="_blank"
-              class="w-9 h-9 rounded-lg bg-white/[0.05] hover:bg-blue-600 text-slate-300 hover:text-white flex items-center justify-center transition-all duration-200"
+              class="w-9 h-9 rounded-lg bg-white/[0.05] hover:bg-blue-600 text-slate-200 hover:text-white flex items-center justify-center transition-all duration-200"
             >
               <img v-if="s.logoImage" :src="s.logoImage" :alt="s.name" class="w-4 h-4 object-contain brightness-0 invert opacity-50" />
               <span v-else v-html="s.icon" />
@@ -80,7 +84,11 @@ const social = [
           <p class="text-white font-bold text-xs uppercase tracking-[0.15em] mb-5">Sản Phẩm</p>
           <ul class="space-y-3">
             <li v-for="link in links.services" :key="link.label">
-              <a :href="link.href" class="text-slate-300 hover:text-white text-sm transition-colors flex items-center gap-2 group">
+              <a
+                :href="link.href"
+                class="text-slate-200 hover:text-white text-sm transition-colors flex items-center gap-2 group"
+                @click="link.tab ? switchToProductsTab() : null"
+              >
                 <span class="w-1 h-1 bg-blue-600 rounded-full group-hover:bg-blue-400 transition-colors" />
                 {{ link.label }}
               </a>
@@ -94,7 +102,7 @@ const social = [
           <div class="space-y-5 mb-5">
             <div v-for="branch in links.branches" :key="branch.label">
               <p class="text-white text-sm font-semibold mb-0.5">{{ branch.label }}</p>
-              <p class="text-slate-400 text-xs">{{ branch.sub }}</p>
+              <p class="text-slate-300 text-xs">{{ branch.sub }}</p>
             </div>
           </div>
           <p class="text-white font-bold text-xs uppercase tracking-[0.15em] mb-3">Điện Thoại</p>
@@ -108,10 +116,10 @@ const social = [
     <!-- Bottom bar -->
     <div class="border-t border-white/[0.05]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p class="text-slate-400 text-xs">© 2025 TÒNG THUỶ. All rights reserved.</p>
+        <p class="text-slate-300 text-xs">© 2025 TÒNG THUỶ. All rights reserved.</p>
         <div class="flex gap-6">
-          <a href="#" class="text-slate-400 hover:text-white text-xs transition-colors">Chính Sách Bảo Mật</a>
-          <a href="#" class="text-slate-400 hover:text-white text-xs transition-colors">Điều Khoản Dịch Vụ</a>
+          <a href="#" class="text-slate-300 hover:text-white text-xs transition-colors">Chính Sách Bảo Mật</a>
+          <a href="#" class="text-slate-300 hover:text-white text-xs transition-colors">Điều Khoản Dịch Vụ</a>
         </div>
       </div>
     </div>
